@@ -37,4 +37,4 @@ Add the Hugo version in [config.toml](./config.toml):
 
 Go to https://vercel.com/{your-username}/{your-project-name}/settings/build-and-deployment
 Override the Install command with:
-yum install -y golang && npm install
+yum install -y golang
