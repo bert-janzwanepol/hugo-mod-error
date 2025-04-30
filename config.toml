@@ -6,3 +6,8 @@ theme = "ananke"
 [module]
   [[module.imports]]
     path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
+
+[module.hugoVersion]
+    min = "0.80.0"
+    max = "0.92.2"
+    extended = true
