@@ -1,19 +1,34 @@
 # Hugo Example
 
-This directory is a brief example of a [Hugo](https://gohugo.io/) app that can be deployed to Vercel with zero configuration.
+This directory is a minimal reproducable example for a Vercel build error.
 
-## Deploy Your Own
+## Steps to reproduce
 
-Deploy your own Hugo project with Vercel.
+### Init a module
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/hugo&template=hugo)
+```
+ hugo mod init github.com/bert-janzwanepol/hugo-mod-error
+```
 
-_Live Example: https://hugo-template.vercel.app_
+### Specify a go _PATCH_ version and other optional dependencies
 
-### How We Created This Example
+```
+module github.com/bert-janzwanepol/hugo-mod-error
 
-To get started with Hugo for deployment with Vercel, you can use the [Hugo CLI](https://gohugo.io/commands/) to initialize the project:
+go 1.22.2
 
-```shell
-$ hugo new site project-name
+require github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.21300.20800
+```
+
+### Fix a build error by downgrading hugo to 0.92.0
+
+The Ananke theme uses deprecated/removed features from older hugo versions.
+In order to build the project succesfully, downgrade to 0.92.0
+Add the Hugo version in [config.toml](./config.toml):
+
+```toml
+[module.hugoVersion]
+    min = "0.80.0"
+    max = "0.92.2"
+    extended = true
 ```
