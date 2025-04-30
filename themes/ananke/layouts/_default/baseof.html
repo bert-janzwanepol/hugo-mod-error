@@ -53,6 +53,9 @@
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
+    {{ with resources.Get "js/alpine.js" }}
+      <script defer src="{{ .RelPermalink }}"></script>
+    {{ end }}
     {{ block "scripts" . }}{{ partialCached "site-scripts.html" . }}{{ end }}
   </body>
 </html>
